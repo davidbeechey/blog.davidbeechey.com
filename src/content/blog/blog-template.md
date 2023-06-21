@@ -4,6 +4,7 @@ description: "This is a blog template."
 published: 2020-01-01
 updated: 2020-01-01
 tags: ["blog", "template"]
+categories: ["blog"]
 # image: put image src here
 # alt: put alt text here
 draft: true

@@ -5,14 +5,16 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     published: z
-      .date()
+      .string()
       .or(z.date())
       .transform((val) => new Date(val)),
     updated: z
-      .date()
+      .string()
+      .or(z.date())
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
     tags: z.array(z.string()).optional(),
+    categories: z.array(z.string()).optional(),
     image: z.string().optional(),
     alt: z
       .string()
