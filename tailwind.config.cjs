@@ -12,9 +12,22 @@ module.exports = {
       },
       fontFamily: {
         // "blog-title": ["DM Mono", "monospace"],
-        "blog-title": ["Space Mono", "monospace"],
+        "blog-title": [
+          "Space Grotesk Variable",
+          "sans-serif",
+          ...defaultTheme.fontFamily.sans,
+        ],
         "blog-text": ["DM Sans", "sans-serif", ...defaultTheme.fontFamily.sans],
-        "blog-heading": ["Rubik", "sans-serif"],
+        // "blog-heading": [
+        //   "Rubik",
+        //   "sans-serif",
+        //   ...defaultTheme.fontFamily.sans,
+        // ],
+        "blog-heading": [
+          "Space Grotesk Variable",
+          "sans-serif",
+          ...defaultTheme.fontFamily.sans,
+        ]
       },
     },
   },
