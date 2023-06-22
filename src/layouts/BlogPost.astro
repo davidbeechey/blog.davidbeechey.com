@@ -1,12 +1,23 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "@/components/BaseHead.astro";
-import FormattedDate from "@/components/FormattedDate.astro";
+import "@fontsource/dm-sans";
+import { formatDate } from "@/utils/date";
+import BlogTag from "@/components/BlogTag.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, published, updated, tags, image, alt, draft } =
-  Astro.props;
+const {
+  title,
+  description,
+  author,
+  published,
+  updated,
+  tags,
+  image,
+  alt,
+  draft,
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,21 +26,54 @@ const { title, description, published, updated, tags, image, alt, draft } =
     <BaseHead title={title} description={description} />
   </head>
   <body>
-    <main>
-      <article>
-        {image && <img width={720} height={360} src={image} alt={alt} />}
-        <h1>{title}</h1>
-        <FormattedDate date={published} />
+    <main class="mx-auto my-32 max-w-3xl px-4">
+      <article class="space-y-6 font-blog-text">
+        <h1 class="font-blog-title text-7xl">{title}</h1>
+        <p class="text-2xl">{description}</p>
         {
-          updated && (
-            <div>
-              Last updated on <FormattedDate date={updated} />
+          image && (
+            <img
+              width={1920}
+              height={1080}
+              class="mx-auto mb-16 rounded-xl"
+              src={image}
+              alt={alt}
+            />
+          )
+        }
+        <div class="flex justify-between gap-8 text-gray-600">
+          <div>
+            <time class="text-2xl">
+              {formatDate(published)}
+            </time>
+            {
+              updated && (
+                <p>
+                  Last updated on <time>{formatDate(published)}</time>
+                </p>
+              )
+            }
+          </div>
+          <p class="text-end text-2xl">By {author}</p>
+        </div>
+        {
+          tags && tags.length > 0 && (
+            <div class="flex flex-wrap items-center gap-1">
+              <p class="mr-2 font-bold">Tags:</p>
+              {tags.map((tag) => (
+                <p class="leading-sm inline-flex items-center rounded-full bg-primary-600 px-3 py-1 text-xs font-bold uppercase text-white">
+                  {tag}
+                </p>
+              ))}
             </div>
           )
         }
-        {tags && tags.length > 0 && <div>Tags: {tags.join(", ")}</div>}
         <hr />
-        <slot />
+        <div
+          class="prose prose-gray space-y-4 py-8 prose-h5:prose-xl lg:prose-xl xl:prose-2xl prose-headings:font-blog-heading prose-headings:font-extrabold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:font-blog-text prose-p:text-lg prose-p:leading-relaxed"
+        >
+          <slot />
+        </div>
       </article>
     </main>
   </body>

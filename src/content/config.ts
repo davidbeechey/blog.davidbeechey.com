@@ -22,6 +22,7 @@ const blog = defineCollection({
       .refine((val) => val !== "", {
         message: "alt text is required if image is present",
       }),
+    author: z.string(),
     draft: z.boolean().optional(),
   }),
 });
