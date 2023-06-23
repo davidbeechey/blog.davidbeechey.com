@@ -1,0 +1,52 @@
+---
+import { formatDate } from "@/utils/date";
+import type { CollectionEntry } from "astro:content";
+
+type Props = { post: CollectionEntry<"blog"> };
+
+const {
+  title,
+  description,
+  author,
+  published,
+  updated,
+  tags,
+  image,
+  alt,
+  draft,
+} = Astro.props.post.data;
+
+const url = `/blog/${Astro.props.post.slug}`;
+---
+
+<a
+  class="flex w-full flex-col justify-between gap-8 rounded-lg bg-white p-8 font-blog-text transition hover:shadow-lg"
+  href={url}
+>
+  <div>
+    {
+      image && (
+        <img
+          class="mb-4 w-full rounded-lg"
+          src={image}
+          alt={alt}
+          loading="lazy"
+          width="100%"
+          height="auto"
+        />
+      )
+    }
+    <h1 class="font-blog-heading text-2xl font-bold">{title}</h1>
+    <p class="line-clamp-2">{description}</p>
+  </div>
+  <div class="flex justify-between">
+    <span class="text-sm text-gray-500">
+      {author}
+    </span>
+    {
+      updated && (
+        <span class="text-sm text-gray-500">{formatDate(published)}</span>
+      )
+    }
+  </div>
+</a>

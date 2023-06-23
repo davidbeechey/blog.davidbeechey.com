@@ -18,9 +18,9 @@ export async function get(context) {
       author: post.data.author,
       description: post.data.description,
       categories: post.data.categories,
-      draft: post.data.draft,
       link: `/blog/${post.slug}/`,
       content: sanitizeHtml(parser.render(post.body)),
+      draft: import.meta.env.PROD ? post.data.draft : false,
     })),
   });
 }

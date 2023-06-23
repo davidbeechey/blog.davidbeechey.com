@@ -1,0 +1,38 @@
+---
+import SocialLinks from "./SocialLinks";
+
+---
+
+<header class="mx-auto grid h-28 grid-cols-3 items-center">
+  <h1 class="col-span-1 mx-auto select-none font-blog-title text-3xl font-bold">
+    David Beechey
+  </h1>
+  <nav class="col-span-1 mx-auto rounded-lg bg-white px-8 py-3 shadow-md">
+    <ul class="flex gap-8 font-blog-text text-lg">
+      <li>
+        <a
+          href="/"
+          class="text-gray-600 transition duration-500 hover:font-bold hover:text-black"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/about"
+          class="text-gray-600 transition duration-500 hover:font-bold hover:text-black"
+          >About Me</a
+        >
+      </li>
+      <li>
+        <a
+          href="/contact"
+          class="text-gray-600 transition duration-500 hover:font-bold hover:text-black"
+          >Contact Me</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <div class="col-span-1 mx-auto">
+    <SocialLinks client:load />
+  </div>
+</header>
