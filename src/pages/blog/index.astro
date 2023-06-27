@@ -2,6 +2,7 @@
 import BlogCard from "@/components/BlogCardAstro.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@fontsource-variable/space-grotesk";
+import "@fontsource-variable/rubik";
 import { getCollection } from "astro:content";
 import { tags } from "@/tags";
 import BlogList from "@/components/BlogList";
@@ -13,10 +14,8 @@ const posts = (await getCollection("blog")).sort(
 
 <Layout>
   <main class="space-y-4">
-    <h1 class="max-w-max select-none font-blog-heading text-3xl font-bold">
-      David Beechey
-    </h1>
-    <h1 class="font-blog-title text-8xl">The Blog</h1>
+    <h1 class="max-w-max font-blog-text text-3xl">David Beechey</h1>
+    <h1 class="font-big-heading text-8xl font-black">The Blog</h1>
     <BlogList posts={posts} tags={tags} client:load />
   </main>
 </Layout>

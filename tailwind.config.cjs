@@ -23,11 +23,12 @@ module.exports = {
         //   "sans-serif",
         //   ...defaultTheme.fontFamily.sans,
         // ],
+        "big-heading": ["Rubik", "sans-serif", ...defaultTheme.fontFamily.sans],
         "blog-heading": [
           "Space Grotesk Variable",
           "sans-serif",
           ...defaultTheme.fontFamily.sans,
-        ]
+        ],
       },
     },
   },
