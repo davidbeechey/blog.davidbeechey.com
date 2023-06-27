@@ -1,8 +1,10 @@
 ---
-import BlogCard from "@/components/BlogCard.astro";
+import BlogCard from "@/components/BlogCardAstro.astro";
 import Layout from "@/layouts/Layout.astro";
 import "@fontsource-variable/space-grotesk";
 import { getCollection } from "astro:content";
+import { tags } from "@/tags";
+import BlogList from "@/components/BlogList";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.published.valueOf() - b.data.published.valueOf()
@@ -10,10 +12,11 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <Layout>
-  <main class="space-y-16">
+  <main class="space-y-4">
+    <h1 class="max-w-max select-none font-blog-heading text-3xl font-bold">
+      David Beechey
+    </h1>
     <h1 class="font-blog-title text-8xl">The Blog</h1>
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-      {posts.map((post) => <BlogCard post={post} />)}
-    </div>
+    <BlogList posts={posts} tags={tags} client:load />
   </main>
 </Layout>
