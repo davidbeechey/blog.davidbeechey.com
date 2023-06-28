@@ -2,6 +2,7 @@ import type { CollectionEntry } from "astro:content";
 import { BlogCard } from "./BlogCard";
 import { useState } from "react";
 import { cn } from "@/utils/cn";
+import { get } from "@/pages/rss.xml";
 
 export const BlogList = ({
   posts,
@@ -12,6 +13,8 @@ export const BlogList = ({
 }) => {
   const [selected, setSelected] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const filteredPosts = getFilteredPosts(posts, selected, searchQuery);
 
   return (
     <div className="mt-8 space-y-8">
@@ -44,9 +47,13 @@ export const BlogList = ({
         </div>
       )}
       <div className="grid grid-cols-1 gap-4 divide-y divide-gray-200 transition-colors dark:divide-gray-700 lg:grid-cols-1">
-        {getFilteredPosts(posts, selected, searchQuery).map((post) => (
-          <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
-        ))}
+        {filteredPosts.length !== 0 ? (
+          filteredPosts.map((post) => (
+            <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
+          ))
+        ) : (
+          <p className="py-8 text-center text-3xl">Posts coming soon...</p>
+        )}
       </div>
     </div>
   );
