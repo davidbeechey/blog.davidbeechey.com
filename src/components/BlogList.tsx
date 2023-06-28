@@ -3,13 +3,13 @@ import { BlogCard } from "./BlogCard";
 import { useState } from "react";
 import { cn } from "@/utils/cn";
 
-export default function BlogList({
+export const BlogList = ({
   posts,
   tags,
 }: {
   posts: CollectionEntry<"blog">[];
   tags: Record<string, number>;
-}) {
+}) => {
   const [selected, setSelected] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
@@ -33,11 +33,9 @@ export default function BlogList({
                 !selected.includes(tag) && "bg-primary-600 hover:bg-primary-700"
               )}
               onClick={() => {
-                if (selected.includes(tag)) {
-                  setSelected((selected) => selected.filter((t) => t !== tag));
-                  return;
-                }
-                setSelected((selected) => [...selected, tag]);
+                selected.includes(tag)
+                  ? setSelected((selected) => selected.filter((t) => t !== tag))
+                  : setSelected((selected) => [...selected, tag]);
               }}
             >
               {tag}
@@ -46,34 +44,44 @@ export default function BlogList({
         </div>
       )}
       <div className="grid grid-cols-1 gap-4 divide-y lg:grid-cols-1">
-        {posts
-          .filter(
-            (post) =>
-              post.data.tags?.some((tag) => selected.includes(tag)) ||
-              selected.length === 0
-          )
-          .filter(
-            (post) =>
-              post.data.title
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase()) ||
-              post.data.description
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase()) ||
-              post.data.tags?.some((tag) =>
-                tag.toLowerCase().includes(searchQuery.toLowerCase())
-              ) ||
-              post.body.toLowerCase().includes(searchQuery.toLowerCase())
-          )
-          .sort(
-            (a, b) =>
-              new Date(b.data.published).getTime() -
-              new Date(a.data.published).getTime()
-          )
-          .map((post) => (
-            <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
-          ))}
+        {getFilteredPosts(posts, selected, searchQuery).map((post) => (
+          <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
+        ))}
       </div>
     </div>
   );
-}
+};
+
+/**
+ * Filters the posts based on the selected tags and search query, and sorts them by date
+ * @param posts The posts to filter
+ * @param selected The selected tags
+ * @param searchQuery The search query
+ */
+const getFilteredPosts = (
+  posts: CollectionEntry<"blog">[],
+  selected: string[],
+  searchQuery: string
+) =>
+  posts
+    .filter(
+      (post) =>
+        post.data.tags?.some((tag) => selected.includes(tag)) ||
+        selected.length === 0
+    )
+    .filter(
+      (post) =>
+        post.data.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.data.description
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase()) ||
+        post.data.tags?.some((tag) =>
+          tag.toLowerCase().includes(searchQuery.toLowerCase())
+        ) ||
+        post.body.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort(
+      (a, b) =>
+        new Date(b.data.published).getTime() -
+        new Date(a.data.published).getTime()
+    );

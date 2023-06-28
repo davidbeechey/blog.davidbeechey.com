@@ -1,6 +1,6 @@
 {
-  "name": "David Beechey's Personal Website",
-  "short_name": "davidbeechey.com",
+  "name": "David Beechey's Personal Blog",
+  "short_name": "blog.davidbeechey.com",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#FFFFFF",
+  "theme_color": "#000000",
   "background_color": "#FFFFFF",
   "display": "standalone"
 }

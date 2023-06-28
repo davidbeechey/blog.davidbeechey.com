@@ -1,9 +1,16 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { tags } from "@/tags";
+import { BlogList } from "@/components/BlogList";
+
+const posts = await getCollection("blog");
 ---
 
 <Layout>
-  <main>
-    <h1 class="text-2xl">Home</h1>
+  <main class="space-y-2">
+    <h1 class="max-w-max text-3xl">David Beechey</h1>
+    <h1 class="font-title text-[10rem] font-black leading-[1.2]">Blog</h1>
+    <BlogList posts={posts} tags={tags} client:load />
   </main>
 </Layout>
