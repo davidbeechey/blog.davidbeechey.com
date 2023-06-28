@@ -30,7 +30,7 @@ const { title, description, author, published, updated, tags, image, alt } =
       </time>
       {
         updated && updated.getTime() !== published.getTime() && (
-          <p>
+          <p class="text-base">
             Last updated on <time>{formatDate(updated)}</time>
           </p>
         )
