@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "@/utils/date";
+import { ThemeToggle } from "./ThemeToggle";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, author, published, updated, tags, image, alt } =
+  Astro.props;
+---
+
+<article class="space-y-8">
+  <h1 class="font-title text-7xl">{title}</h1>
+  <p class="text-3xl">{description}</p>
+  {
+    image && (
+      <img
+        width={1920}
+        height={1080}
+        class="mx-auto mb-16 rounded-xl shadow-md dark:shadow-gray-900"
+        src={image}
+        alt={alt}
+      />
+    )
+  }
+  <div
+    class="flex flex-wrap justify-between gap-x-16 text-lg text-gray-800 dark:text-gray-300 sm:text-2xl"
+  >
+    <div>
+      <time>
+        {formatDate(published)}
+      </time>
+      {
+        updated && updated.getTime() !== published.getTime() && (
+          <p class="text-base">
+            Last updated on <time>{formatDate(updated)}</time>
+          </p>
+        )
+      }
+    </div>
+    <p class="text-end">By {author}</p>
+  </div>
+  {
+    tags && tags.length > 0 && (
+      <div class="flex flex-wrap items-center gap-1">
+        <p class="mr-2 font-bold">Tags:</p>
+        {tags.map((tag) => (
+          <p class="leading-sm inline-flex items-center rounded-full bg-primary-600 px-3 py-1 text-xs font-bold uppercase text-white">
+            {tag}
+          </p>
+        ))}
+      </div>
+    )
+  }
+  <hr />
+  <div
+    class="prose prose-gray space-y-4 py-8 dark:prose-invert lg:prose-xl xl:prose-2xl prose-headings:pt-4 prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
+  >
+    <slot />
+  </div>
+</article>

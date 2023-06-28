@@ -1,9 +1,20 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { tags } from "@/tags";
+import { BlogList } from "@/components/BlogList";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { SITE_TITLE } from "@/consts";
+
+const posts = await getCollection("blog");
 ---
 
-<Layout title="Home" description="This is the home page.">
-  <main>
-    <h1 class="text-2xl">Home</h1>
+<Layout title={`Home | ${SITE_TITLE}`}>
+  <main class="space-y-2">
+    <h1 class="max-w-max text-3xl">David Beechey</h1>
+    <h1 class="font-title text-8xl font-black leading-[1.2] sm:text-[10rem]">
+      Blog
+    </h1>
+    <BlogList posts={posts} tags={tags} client:load />
   </main>
 </Layout>
