@@ -16,7 +16,7 @@ export const get = async (context) => {
     drafts: false,
     items: posts.map((post) => ({
       title: post.data.title,
-      pubDate: post.data.updated,
+      pubDate: post.data.updated || post.data.published,
       author: post.data.author,
       description: post.data.description,
       categories: post.data.categories,

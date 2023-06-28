@@ -51,7 +51,9 @@ export const BlogList = ({
             <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
           ))
         ) : (
-          <p className="py-8 text-center text-3xl">Posts coming soon...</p>
+          <p className="py-8 text-center text-xl sm:text-3xl">
+            Posts coming soon...
+          </p>
         )}
       </div>
     </div>
