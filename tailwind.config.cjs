@@ -11,21 +11,13 @@ module.exports = {
         secondary: colors.rose,
       },
       fontFamily: {
-        // "blog-title": ["DM Mono", "monospace"],
-        "blog-title": [
-          "Space Grotesk Variable",
+        title: [
+          "Libre Baskerville",
           "sans-serif",
           ...defaultTheme.fontFamily.sans,
         ],
-        "blog-text": ["DM Sans", "sans-serif", ...defaultTheme.fontFamily.sans],
-        // "blog-heading": [
-        //   "Rubik",
-        //   "sans-serif",
-        //   ...defaultTheme.fontFamily.sans,
-        // ],
-        "big-heading": ["Rubik", "sans-serif", ...defaultTheme.fontFamily.sans],
-        "blog-heading": [
-          "Space Grotesk Variable",
+        sans: [
+          "Work Sans Variable",
           "sans-serif",
           ...defaultTheme.fontFamily.sans,
         ],

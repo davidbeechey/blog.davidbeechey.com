@@ -26,6 +26,12 @@ dependencies:
   '@fontsource-variable/space-grotesk':
     specifier: ^5.0.3
     version: 5.0.3
+  '@fontsource-variable/work-sans':
+    specifier: ^5.0.4
+    version: 5.0.4
+  '@fontsource/biz-udpmincho':
+    specifier: ^5.0.3
+    version: 5.0.3
   '@fontsource/dm-mono':
     specifier: ^5.0.3
     version: 5.0.3
@@ -33,6 +39,9 @@ dependencies:
     specifier: ^5.0.3
     version: 5.0.3
   '@fontsource/dm-serif-text':
+    specifier: ^5.0.3
+    version: 5.0.3
+  '@fontsource/libre-baskerville':
     specifier: ^5.0.3
     version: 5.0.3
   '@fontsource/space-mono':
@@ -706,6 +715,14 @@ packages:
     resolution: {integrity: sha512-hs3U0Zy7+t93swf50/LMkredodBmBJUzkl9UWymeJRZqS8SfbuMUOrcCsEbFp94QPNh8lqGrg5xRIhyfD6rNKw==}
     dev: false
 
+  /@fontsource-variable/work-sans@5.0.4:
+    resolution: {integrity: sha512-d/UdobF+BjjV36EuOhHQoOKJcBAz6Z4PT8Zhps+oNXCavol6k8XfHLCS103Knr9/a/QyKthJU/l4TMWSZChm0w==}
+    dev: false
+
+  /@fontsource/biz-udpmincho@5.0.3:
+    resolution: {integrity: sha512-MSGqqpzef780+Or1hUnjw/ikfHoRwM1oT4hr+qr3O3re8ckVZTPN3GecSEDT8OMkHgTazj+k+lRXp0zzKvCxhg==}
+    dev: false
+
   /@fontsource/dm-mono@5.0.3:
     resolution: {integrity: sha512-9CHaVMFmn4Wt+FXy649RySQlM0kGzeqyz8j/fiJOO1TMyMb1ouWMJHqKB9wm+Yse8kMV3Fp8+d9V+PJK7rHneg==}
     dev: false
@@ -716,6 +733,10 @@ packages:
 
   /@fontsource/dm-serif-text@5.0.3:
     resolution: {integrity: sha512-AB0VQ1+NZ9qPQ6AdprhSFsCSRrqgYCTfCwcpgB05LNe3goMM/VguhO8IyuDkjTCBeptHndcOUYxQ+burQ7Y3Vw==}
+    dev: false
+
+  /@fontsource/libre-baskerville@5.0.3:
+    resolution: {integrity: sha512-J0mx4fcdQMFO0uUwq1lKmgrGh5si4COggiFBdcKX8vNTcx//xnh8qQ6TOgy8hx5Mni8ldFbp2kC9sW3G4XImTg==}
     dev: false
 
   /@fontsource/space-mono@5.0.3:

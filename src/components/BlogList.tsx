@@ -18,7 +18,7 @@ export default function BlogList({
       <input
         type="text"
         placeholder="Search"
-        className="w-full rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
+        className="w-full rounded-lg border px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-600 focus:ring-opacity-50"
         onChange={(e) => setSearchQuery(e.currentTarget.value)}
       />
       {tags && Object.keys(tags).length > 0 && (
@@ -45,7 +45,7 @@ export default function BlogList({
           ))}
         </div>
       )}
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 divide-y lg:grid-cols-1">
         {posts
           .filter(
             (post) =>
@@ -64,6 +64,11 @@ export default function BlogList({
                 tag.toLowerCase().includes(searchQuery.toLowerCase())
               ) ||
               post.body.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+          .sort(
+            (a, b) =>
+              new Date(b.data.published).getTime() -
+              new Date(a.data.published).getTime()
           )
           .map((post) => (
             <BlogCard key={post.id} {...post} searchQuery={searchQuery} />

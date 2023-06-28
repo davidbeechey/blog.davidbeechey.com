@@ -1,10 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "@/components/BaseHead.astro";
-import "@fontsource/dm-sans";
-import "@fontsource-variable/space-grotesk";
-import "@fontsource-variable/rubik";
 import { formatDate } from "@/utils/date";
+import "@fontsource/libre-baskerville";
+import "@fontsource-variable/work-sans";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -26,15 +25,15 @@ const {
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="bg-gray-100 sm:px-4">
+  <body>
     <main
-      class="mx-auto max-w-4xl rounded-lg bg-white p-8 sm:my-16 sm:p-16 lg:p-20"
+      class="mx-auto max-w-4xl rounded-lg px-6 py-8 sm:px-8 sm:py-16 md:py-20 lg:py-24 xl:py-32"
     >
-      <article class="space-y-6 font-blog-text">
-        <h1 class="font-blog-title text-7xl">{title}</h1>
-        <p class="text-2xl">{description}</p>
+      <article class="space-y-8">
+        <h1 class="font-title text-7xl">{title}</h1>
+        <p class="text-3xl">{description}</p>
         {
-          image && (
+          image ? (
             <img
               width={1920}
               height={1080}
@@ -42,6 +41,8 @@ const {
               src={image}
               alt={alt}
             />
+          ) : (
+            <div class="h-4" />
           )
         }
         <div class="flex justify-between gap-8 text-gray-800">
@@ -73,7 +74,7 @@ const {
         }
         <hr />
         <div
-          class="prose prose-gray space-y-4 py-8 prose-h5:prose-xl lg:prose-xl xl:prose-2xl prose-headings:font-blog-heading prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:font-blog-text prose-p:text-lg prose-p:leading-relaxed"
+          class="prose prose-gray prose-headings:pt-4 space-y-4 py-8 lg:prose-xl xl:prose-2xl prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
         >
           <slot />
         </div>

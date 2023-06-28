@@ -2,7 +2,7 @@
 title: "Hello there! This is a blog template."
 description: "This is a blog template."
 published: 2020-01-01
-updated: 2020-01-01
+updated: 2020-01-02
 tags: ["blog", "template"]
 categories: ["blog"]
 image: /images/blog/blog-template.jpg

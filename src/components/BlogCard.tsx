@@ -9,6 +9,7 @@ type Props = CollectionEntry<"blog"> & {
 export const BlogCard = ({
   data: { image, alt, description, title, author, published, updated },
   slug,
+  render,
   body,
   searchQuery = "",
 }: Props) => {
@@ -20,7 +21,7 @@ export const BlogCard = ({
     if (match) {
       const startIndex = body.indexOf(match);
       console.log(startIndex);
-      const prefix = "..."
+      const prefix = "...";
       const searchQueryWithCasing = body.substring(
         startIndex,
         startIndex + match.length
@@ -31,37 +32,38 @@ export const BlogCard = ({
   }, [body, searchQuery]);
 
   return (
-    <a
-      className="flex w-full flex-col justify-between gap-8 rounded-lg bg-white p-8 font-blog-text transition hover:shadow-lg"
-      href={url}
-    >
-      <div>
+    <a href={url} className="group flex w-full flex-col gap-4 pb-4 pt-8">
+      <div className="space-y-4">
         {image && (
+          <div className="mb-8">
           <img
-            className="mb-4 w-full rounded-lg"
+            className="w-full rounded-xl shadow-lg"
             src={image}
             alt={alt}
             loading="lazy"
             width="100%"
             height="auto"
           />
+          </div>
         )}
-        <h1 className="font-blog-heading text-2xl font-medium">
+        <h1 className="font-title text-5xl font-medium decoration-sky-600 decoration-4 group-hover:underline">
           <BoldedText text={title} shouldBeBold={searchQuery} />
         </h1>
-        <p className="line-clamp-2">
+        <p className="line-clamp-2 text-2xl">
           <BoldedText text={description} shouldBeBold={searchQuery} />
         </p>
-        {searchQuery ? (
-          <p className="mt-4 line-clamp-1 italic">
-            <BoldedText
-              text={bodySearchQuery || ""}
-              shouldBeBold={searchQuery}
-            />
-          </p>
-        ) : (
-          false
-        )}
+        <div>
+          {searchQuery ? (
+            <p className="mt-4 line-clamp-1 italic">
+              <BoldedText
+                text={bodySearchQuery || ""}
+                shouldBeBold={searchQuery}
+              />
+            </p>
+          ) : (
+            false
+          )}
+        </div>
       </div>
       <div className="flex justify-between">
         <span className="text-sm text-gray-500">{author}</span>
