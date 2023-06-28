@@ -2,7 +2,6 @@ import type { CollectionEntry } from "astro:content";
 import { BlogCard } from "./BlogCard";
 import { useState } from "react";
 import { cn } from "@/utils/cn";
-import { get } from "@/pages/rss.xml";
 
 export const BlogList = ({
   posts,

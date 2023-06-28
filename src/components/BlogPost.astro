@@ -10,7 +10,7 @@ const { title, description, author, published, updated, tags, image, alt } =
 ---
 
 <article class="space-y-8">
-  <h1 class="font-title text-7xl">{title}</h1>
+  <h1 class="font-title text-6xl sm:text-7xl">{title}</h1>
   <p class="text-3xl">{description}</p>
   {
     image && (
@@ -54,7 +54,7 @@ const { title, description, author, published, updated, tags, image, alt } =
   }
   <hr />
   <div
-    class="prose prose-gray space-y-4 py-8 dark:prose-invert lg:prose-xl xl:prose-2xl prose-headings:pt-4 prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
+    class="prose prose-gray space-y-4 py-8 dark:prose-invert lg:prose-lg xl:prose-xl prose-headings:pt-4 prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-4xl sm:prose-h1:text-5xl prose-h2:text-3xl sm:prose-h2:text-4xl prose-h3:text-2xl sm:prose-h3:text-3xl prose-h4:text-xl sm:prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
   >
     <slot />
   </div>

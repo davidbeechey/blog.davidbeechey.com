@@ -44,7 +44,7 @@ export const BlogCard = ({
     </div>
     <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
       <span>{author}</span>
-      {updated && <span>{formatDate(published)}</span>}
+      <span>{formatDate(published)}</span>
     </div>
   </a>
 );
