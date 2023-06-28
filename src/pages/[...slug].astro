@@ -1,5 +1,6 @@
 ---
 import BlogPost from "@/components/BlogPost.astro";
+import { SITE_TITLE } from "@/consts";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { CollectionEntry, getCollection } from "astro:content";
 
@@ -21,7 +22,10 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={`${post.data.title} | ${SITE_TITLE}`}
+  description={post.data.description}
+>
   <BlogPost {...post.data}>
     <Content />
   </BlogPost>

@@ -4,14 +4,17 @@ import { getCollection } from "astro:content";
 import { tags } from "@/tags";
 import { BlogList } from "@/components/BlogList";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SITE_TITLE } from "@/consts";
 
 const posts = await getCollection("blog");
 ---
 
-<Layout>
+<Layout title={`Home | ${SITE_TITLE}`}>
   <main class="space-y-2">
     <h1 class="max-w-max text-3xl">David Beechey</h1>
-    <h1 class="font-title text-8xl sm:text-[10rem] font-black leading-[1.2]">Blog</h1>
+    <h1 class="font-title text-8xl font-black leading-[1.2] sm:text-[10rem]">
+      Blog
+    </h1>
     <BlogList posts={posts} tags={tags} client:load />
   </main>
 </Layout>
