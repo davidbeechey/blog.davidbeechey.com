@@ -3,10 +3,11 @@ import Layout from "@/layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 import { tags } from "@/tags";
 import { BlogList } from "@/components/BlogList";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { SITE_TITLE } from "@/consts";
 
-const posts = await getCollection("blog");
+let posts = await getCollection("blog");
+
+import.meta.env.PROD && (posts = posts.filter((post) => !post.data.draft));
 ---
 
 <Layout title={`Home | ${SITE_TITLE}`}>
