@@ -14,7 +14,7 @@ export const BlogCard = ({
       {image && (
         <div className="mb-8">
           <img
-            className="w-full rounded-xl shadow-lg"
+            className="w-full rounded-xl shadow-lg dark:shadow-gray-900"
             src={image}
             alt={alt}
             loading="lazy"
@@ -42,11 +42,9 @@ export const BlogCard = ({
         )}
       </div>
     </div>
-    <div className="flex justify-between">
-      <span className="text-sm text-gray-500">{author}</span>
-      {updated && (
-        <span className="text-sm text-gray-500">{formatDate(published)}</span>
-      )}
+    <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400">
+      <span>{author}</span>
+      {updated && <span>{formatDate(published)}</span>}
     </div>
   </a>
 );

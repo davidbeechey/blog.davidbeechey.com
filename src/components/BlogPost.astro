@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { formatDate } from "@/utils/date";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -16,15 +17,15 @@ const { title, description, author, published, updated, tags, image, alt } =
       <img
         width={1920}
         height={1080}
-        class="mx-auto mb-16 rounded-xl shadow-md"
+        class="mx-auto mb-16 rounded-xl shadow-md dark:shadow-gray-900"
         src={image}
         alt={alt}
       />
     )
   }
-  <div class="flex justify-between gap-8 text-gray-800">
+  <div class="flex flex-wrap justify-between gap-x-16 text-gray-800 dark:text-gray-300 text-lg sm:text-2xl">
     <div>
-      <time class="text-2xl">
+      <time>
         {formatDate(published)}
       </time>
       {
@@ -35,7 +36,7 @@ const { title, description, author, published, updated, tags, image, alt } =
         )
       }
     </div>
-    <p class="text-end text-2xl">By {author}</p>
+    <p class="text-end">By {author}</p>
   </div>
   {
     tags && tags.length > 0 && (
@@ -51,7 +52,7 @@ const { title, description, author, published, updated, tags, image, alt } =
   }
   <hr />
   <div
-    class="prose prose-gray space-y-4 py-8 lg:prose-xl xl:prose-2xl prose-headings:pt-4 prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
+    class="prose prose-gray space-y-4 py-8 dark:prose-invert lg:prose-xl xl:prose-2xl prose-headings:pt-4 prose-headings:font-title prose-headings:font-bold prose-h1:mb-0 prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-xl prose-h6:font-normal prose-h6:italic prose-p:text-xl prose-p:leading-relaxed"
   >
     <slot />
   </div>
