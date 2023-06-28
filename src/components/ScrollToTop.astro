@@ -1,0 +1,40 @@
+---
+import { cn } from "@/utils/cn";
+import { ArrowUp } from "lucide-react";
+---
+
+<button
+  onclick="
+  scrollToTop()
+  "
+  id="scroll-to-top"
+  title="Go to top"
+  class="group fixed bottom-2 right-2 z-50 float-right mb-8 mr-8 hidden h-14 w-14 xl:h-auto xl:w-auto items-center justify-center gap-2 rounded-full bg-white px-3 py-2 shadow-lg transition hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-900 xl:bottom-8 xl:right-8 xl:max-w-max xl:rounded-lg xl:shadow-none"
+>
+  <div class="transition group-hover:-translate-y-0.5">
+    <ArrowUp size="20" />
+  </div><span class="hidden xl:block">Scroll to top</span></button
+>
+
+<script is:inline>
+let scrollToTopButton = document.getElementById("scroll-to-top");
+
+window.onscroll = () => scrollFunction();
+
+const scrollFunction = () => {
+  document.body.scrollTop > 300 || document.documentElement.scrollTop > 300
+    ? (scrollToTopButton.style.display = "flex")
+    : (scrollToTopButton.style.display = "none");
+};
+
+const scrollToTop = () => {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+};
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

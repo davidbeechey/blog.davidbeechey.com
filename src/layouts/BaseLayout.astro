@@ -7,6 +7,9 @@ import "@fontsource-variable/work-sans";
 import { cn } from "@/utils/cn";
 import { ArrowBigLeft } from "lucide-react";
 import { ArrowLeft } from "lucide-react";
+import { ArrowUp } from "lucide-react";
+import HomeButton from "@/components/HomeButton.astro";
+import ScrollToTop from "@/components/ScrollToTop.astro";
 
 export interface Props {
   title?: string;
@@ -24,18 +27,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   <body
     class="w-[100vw] overflow-x-hidden bg-white text-gray-900 transition-colors dark:bg-black dark:text-gray-200"
   >
-    <a
-      href="/"
-      class={cn("group flex gap-2 items-center m-4 mb-0 max-w-min lg:fixed lg:top-4 lg:left-4 lg:z-50 py-2 px-3 rounded-lg bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900 transition",
-        Astro.url.pathname === "/" && "hidden",
-        ""
-        )}
-    >
-      <div class="group-hover:-translate-x-1 transition">
-        <ArrowLeft size="15" />
-      </div>
-      Home
-    </a>
+    <HomeButton />
     <main
       class="mx-auto max-w-3xl px-6 py-8 sm:px-8 sm:py-16 md:py-20 lg:py-24 xl:py-32"
     >
@@ -44,5 +36,6 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
       </div>
       <slot />
     </main>
+    <ScrollToTop />
   </body>
 </html>

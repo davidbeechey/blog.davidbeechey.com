@@ -1,0 +1,17 @@
+---
+import { cn } from "@/utils/cn";
+import { ArrowLeft } from "lucide-react";
+---
+
+<a
+  href="/"
+  class={cn(
+    "group flex gap-2 items-center m-4 mb-0 max-w-min lg:fixed lg:top-4 lg:left-4 lg:z-50 py-2 px-3 rounded-lg bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900 transition",
+    Astro.url.pathname === "/" && "hidden"
+  )}
+>
+  <div class="transition group-hover:-translate-x-0.5">
+    <ArrowLeft size="15" />
+  </div>
+  Home
+</a>
