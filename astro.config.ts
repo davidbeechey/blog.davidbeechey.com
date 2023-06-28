@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), sitemap(), react(), mdx()],
-  site: "http://localhost:3000",
+  site: "https://blog.davidbeechey.com",
 });
 
 // TODO: https://github.com/sebholstein/astro-google-fonts-optimizer
