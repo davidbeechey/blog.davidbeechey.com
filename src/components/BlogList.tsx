@@ -48,7 +48,12 @@ export const BlogList = ({
       <div className="grid grid-cols-1 gap-4 divide-y divide-gray-200 transition-colors dark:divide-gray-700 lg:grid-cols-1">
         {filteredPosts.length !== 0 ? (
           filteredPosts.map((post) => (
-            <BlogCard key={post.id} {...post} searchQuery={searchQuery} />
+            <BlogCard
+              key={post.id}
+              {...post}
+              searchQuery={searchQuery}
+              firstId={filteredPosts[0].id}
+            />
           ))
         ) : (
           <p className="py-8 text-center text-xl sm:text-3xl">

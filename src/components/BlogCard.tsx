@@ -1,3 +1,4 @@
+import { cn } from "@/utils/cn";
 import { formatDate } from "@/utils/date";
 import type { CollectionEntry } from "astro:content";
 
@@ -5,9 +6,12 @@ export const BlogCard = ({
   data: { image, alt, description, title, author, published, updated },
   slug: url,
   body,
+  id,
   searchQuery = "",
+  firstId,
 }: CollectionEntry<"blog"> & {
   searchQuery?: string;
+  firstId: string;
 }) => (
   <a href={url} className="group flex w-full flex-col gap-4 pb-4 pt-8">
     <div className="space-y-4">
@@ -23,7 +27,16 @@ export const BlogCard = ({
           />
         </div>
       )}
-      <h1 className="font-title text-5xl font-medium decoration-sky-600 decoration-4 group-hover:underline">
+      <h1
+        className={cn(
+          "font-title text-5xl font-medium decoration-sky-600 decoration-4 group-hover:underline",
+          id === firstId && "underline"
+        )}
+        id={id}
+        onMouseEnter={() =>
+          document.getElementById(firstId)?.classList.remove("underline")
+        }
+      >
         <BoldedText text={title} shouldBeBold={searchQuery} />
       </h1>
       <p className="line-clamp-2 text-2xl">
